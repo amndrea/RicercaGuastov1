@@ -1,0 +1,89 @@
+def config(filename='pgsql.ini', section='postgresql'):
+    file = os.path.realpath(__file__)
+    # Creo il parser
+    parser = ConfigParser()
+    parser.read(filename)
+
+    db = {}
+
+    if not c.AggiungiManutentore("riccardo", "riccardo123", Db):
+        print("non posso aggiungere il manutentore, il nome è gia presente")
+
+
+
+    FUNZIONANTE PER RECUPERARE TUTTE LE TUPLE IN UNA TABELLA
+    Db.curr.execute("SELECT * FROM Manutentori;")
+    for nomi in Db.curr:
+        n = nomi[0]
+        p = nomi[1]
+        print(n,p)
+        m = Manutentore(n,p)
+        print(m.__dict__)
+
+
+    # cose che tolgo da caporeparto per vedere se funzionano da Manutentore
+        def AggiuniGuasto(self, db):
+        return super().AggiuniGuasto(self, db)
+
+
+       @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, nuova_password):
+        if nuova_password != "" and nuova_password != self._password:
+            self._password = nuova_password
+            return True
+        else: return False
+
+
+
+
+    m = c.AggiungiManutentore("CIAO","CIAO",Db)
+    m.password = "ciao"
+    Db.modifica_password(m)
+    print(m.password
+
+
+
+
+
+
+                 Db.is:
+                manutentore = man
+                window2 = gui("UtenteLoggato", manutentore, Db)
+                window, window2 = window2, window
+                window2.window.close()
+            else:
+                sg.Popup("Nome utente o password errati"))
+
+
+
+
+
+
+             stampa_avvio_test("connessione al  database")
+        conn,curr = database_data()
+
+        # Cancello le tabelle
+        curr.execute("DROP TABLE IF EXISTS Manutentori CASCADE;")
+        curr.execute("DROP TABLE IF EXISTS Guasti CASCADE;")
+
+        curr.execute("""CREATE TABLE Manutentori(
+                    nome VARCHAR(25) PRIMARY KEY,
+                    password VARCHAR(25) ); """)
+
+        curr.execute("""CREATE TABLE Guasti (
+                    data TIMESTAMP,
+                    turno VARCHAR(15),
+                    reparto VARCHAR(20),
+                    nome VARCHAR(25),
+                    descrizione_problema VARCHAR (250),
+                    risoluzione VARCHAR(250),
+                    risolto VARCHAR(6),
+                    PRIMARY KEY (data,nome),
+                    FOREIGN KEY(nome) REFERENCES Manutentori); """)
+        conn.close()
+        c = Caporeparto
+
